@@ -1,0 +1,10 @@
+docker build -t meu-redis .
+
+winpty docker run -d --name meu-redis-container -p 6379:6379 meu-redis
+winpty docker run -d --name meu-redis-container -p 6379:6379 meu-redis-senha-thales
+
+winpty docker exec -it meu-redis-container redis-cli -a admin
+winpty docker exec -it meu-redis-container redis-cli -a admin_thales
+
+docker stop $(docker ps -q)
+docker rm $(docker ps -aq)
